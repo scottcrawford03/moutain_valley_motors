@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'admin#index'
+  root to: 'homepage#index'
+
+  get '/about_us', to: 'about_us#index'
+  get 'shop', to: 'shop#index'
+  get 'shop/:id', to: 'shop#show'
   get 'admin/login', to: 'admin#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

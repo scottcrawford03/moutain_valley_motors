@@ -1,0 +1,27 @@
+// Place all the styles related to the Homepage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.nav_bar {
+  padding: 10px 16px;
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.company_name {
+  font-size: 25px;
+  color: blue;
+}
+
+.shop, .about_us {
+  font-size: 20px;
+}
+
+.body_content {
+  padding: 50px;
+  height: 100000px;
+}
