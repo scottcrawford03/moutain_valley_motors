@@ -51,7 +51,7 @@ COPY . ./
 
 # Expose port 3000 to the Docker host, so we can access it
 # from the outside.
-EXPOSE 3000
+EXPOSE 80
 WORKDIR /app
 
 CMD bundle exec rails s -b 0.0.0.0
