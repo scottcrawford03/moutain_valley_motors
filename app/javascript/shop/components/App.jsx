@@ -9,6 +9,11 @@ export default class App extends React.Component {
   componentWillUnmount() {
   }
 
+  handleClick(event, url) {
+    event.preventDefault();
+    window.location.replace(url)
+  }
+
   render() {
     return (
       <div>
@@ -16,7 +21,7 @@ export default class App extends React.Component {
         <div className="body_content">
           SHOP FOR SWEET STUFF
           <br/>
-          <a href="/shop/1"> SWEET CAR HERE</a>
+          <a href="" onClick={(evt)=>this.handleClick(evt, "/shop/1")}> SWEET CAR HERE</a>
         </div>
       </div>
     )
