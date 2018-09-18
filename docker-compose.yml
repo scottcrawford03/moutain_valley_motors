@@ -4,8 +4,6 @@ services:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-      - .:/app
-      - .:/db
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
