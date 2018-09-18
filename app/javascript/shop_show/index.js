@@ -3,5 +3,11 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 
 
-const shopShowPage = document.querySelector('#shop_show')
-ReactDOM.render(<App />, shopShowPage)
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("yolo")
+  const shopShowPage = document.querySelector('#shop_show')
+  const objectsDataTag = document.getElementById('show_data')
+  const objectsData = JSON.parse(objectsDataTag.getAttribute('data'))
+  ReactDOM.render(<App listing={objectsData}/>, shopShowPage)
+})
+

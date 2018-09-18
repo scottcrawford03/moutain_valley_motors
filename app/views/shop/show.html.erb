@@ -1,2 +1,7 @@
 <div id="shop_show"></div>
 <%= javascript_pack_tag 'shop_show' %>
+
+<%= content_tag :div,
+  id: 'show_data',
+  data: @listing.to_json do %>
+<% end %>

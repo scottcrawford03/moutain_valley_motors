@@ -1,13 +1,18 @@
 import React from 'react'
 import NavBar from '../../shared/components/nav_bar'
+import AllListing from './all_listing'
 
 export default class App extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      listings: this.props.listings
+    }
   }
-  componentDidMount() {
-  }
-  componentWillUnmount() {
-  }
+
+  componentDidMount() {}
+  componentWillUnmount() {}
 
   handleClick(event, url) {
     event.preventDefault();
@@ -15,13 +20,46 @@ export default class App extends React.Component {
   }
 
   render() {
+    const {listings} = this.state
+
     return (
       <div>
         <NavBar/>
         <div className="body_content">
-          SHOP FOR SWEET STUFF
-          <br/>
-          <a href="" onClick={(evt)=>this.handleClick(evt, "/shop/1")}> SWEET CAR HERE</a>
+          <div className="all_listings">
+            {listings.map((listing) => {
+              return(
+                <AllListing
+                  data={listing.data}
+                  photos={listing.photos}
+                />
+              )
+            })}
+            {listings.map((listing) => {
+              return(
+                <AllListing
+                  data={listing.data}
+                  photos={listing.photos}
+                />
+              )
+            })}
+            {listings.map((listing) => {
+              return(
+                <AllListing
+                  data={listing.data}
+                  photos={listing.photos}
+                />
+              )
+            })}
+            {listings.map((listing) => {
+              return(
+                <AllListing
+                  data={listing.data}
+                  photos={listing.photos}
+                />
+              )
+            })}
+          </div>
         </div>
       </div>
     )

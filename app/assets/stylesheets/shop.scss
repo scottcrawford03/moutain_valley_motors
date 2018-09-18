@@ -1,3 +1,21 @@
 // Place all the styles related to the shop controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.all_listings_listing {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.all_page_carousel {
+  width: 20%;
+}
+
+.single_listing_show {
+  display: flex;
+}
+
+.single_listing_carousel {
+  width: 40%;
+}
