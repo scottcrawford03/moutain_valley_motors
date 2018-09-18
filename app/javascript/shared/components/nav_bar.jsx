@@ -4,7 +4,7 @@ export default class NavBar extends React.Component {
   state = {
   }
   handleLinkClick(url) {
-    window.location.href = `http://localhost:3000${url}`
+    window.location.href = `${window.location.origin}${url}`
   }
 
   render() {

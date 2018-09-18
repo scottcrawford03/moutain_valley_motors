@@ -13,7 +13,7 @@ export default class NavBar extends React.Component {
 
   handlePhotoClick() {
     const id = this.state.data.id
-    const href = `localhost:3000/shop/${id}`
+    const href = `${window.location.origin}/${id}`
     console.log(href)
     window.location.href = `http://${href}`;
   }
