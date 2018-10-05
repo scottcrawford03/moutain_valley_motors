@@ -14,7 +14,16 @@
  *= require_self
  */
 
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 a,
 a label {
   cursor: pointer;
+}
+
+.application {
+  height: 100%;
 }
