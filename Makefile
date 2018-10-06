@@ -15,3 +15,9 @@ build:
 
 build_web:
 	docker-compose build web
+
+restart-web:
+	echo "stopping the web"
+	docker-compose stop web
+	echo "building the web again"
+	docker-compose up --build
