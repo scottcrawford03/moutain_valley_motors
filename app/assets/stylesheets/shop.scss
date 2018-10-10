@@ -1,9 +1,16 @@
 // Place all the styles related to the shop controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#shop {
+  height: 100%;
+}
+
+#shop_show {
+  height: 100%;
+  overflow: hidden;
+}
 
 .all_listings_listing {
-  position: fixed;
   display: flex;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -15,8 +22,26 @@
 
 .single_listing_show {
   display: flex;
+  height: 100%;
 }
 
 .single_listing_carousel {
   width: 40%;
+}
+
+.all_listings {
+  height: 100%;
+}
+
+.all_details {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 450px;
+  margin-left: 20px;
+
+  p {
+    align-self: flex-start;
+  }
 }

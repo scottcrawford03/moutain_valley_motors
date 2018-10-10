@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../../shared/components/nav_bar'
+import Application from '../../shared/components/application'
 import AllListing from './all_listing'
 
 export default class App extends React.Component {
@@ -23,9 +23,7 @@ export default class App extends React.Component {
     const {listings} = this.state
 
     return (
-      <div>
-        <NavBar/>
-        <div className="body_content">
+        <Application>
           <div className="all_listings">
             {listings.map((listing) => {
               return(
@@ -51,17 +49,8 @@ export default class App extends React.Component {
                 />
               )
             })}
-            {listings.map((listing) => {
-              return(
-                <AllListing
-                  data={listing.data}
-                  photos={listing.photos}
-                />
-              )
-            })}
           </div>
-        </div>
-      </div>
+        </Application>
     )
   }
 }

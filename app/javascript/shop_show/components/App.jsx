@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../../shared/components/nav_bar'
+import Application from '../../shared/components/application'
 import Carousel from 'nuka-carousel';
 
 export default class App extends React.Component {
@@ -24,36 +24,35 @@ export default class App extends React.Component {
     } = data
 
     return (
-      <div>
-        <NavBar/>
-        <div className="body_content">
-          <div className="single_listing_show">
-            <div className="single_listing_carousel">
-              <Carousel>
-                {photos.map((photo) => {
-                  return(<img src={photo.image_url} />)
-                })}
-              </Carousel>
-            </div>
-            <p>{year}</p>
-            <p>{make}</p>
-            <p>{model}</p>
-            <p>{trim}</p>
-            <p>{fuel}</p>
-            <p>{engine}</p>
-            <p>{transmission}</p>
-            <p>{drive_train}</p>
-            <p>{body_type}</p>
-            <p>{color}</p>
-            <p>{interior_color}</p>
-            <p>{interior_type}</p>
-            <p>{fuel_economy}</p>
-            <p>{sold}</p>
-            <p>{stock_number}</p>
-            <p>{mileage}</p>
+      <Application>
+        <div className="single_listing_show">
+          <div className="single_listing_carousel">
+            <Carousel>
+              {photos.map((photo) => {
+                return(<img src={photo.image_url} />)
+              })}
+            </Carousel>
+          </div>
+          <div className="single_details">
+            <p>Year: {year}</p>
+            <p>Make: {make}</p>
+            <p>Model: {model}</p>
+            <p>Trim: {trim}</p>
+            <p>Fuel: {fuel}</p>
+            <p>Engine: {engine}</p>
+            <p>Transmission: {transmission}</p>
+            <p>Drivetrain: {drive_train}</p>
+            <p>Body Type: {body_type}</p>
+            <p>Color: {color}</p>
+            <p>Interior Color: {interior_color}</p>
+            <p>Interior Type: {interior_type}</p>
+            <p>Fuel Economy: {fuel_economy}</p>
+            <p>Sold: {sold}</p>
+            <p>Stock Number: {stock_number}</p>
+            <p>Mileage: {mileage}</p>
           </div>
         </div>
-      </div>
+      </Application>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../../shared/components/nav_bar'
+import Application from '../../shared/components/application';
 
 export default class App extends React.Component {
   state = {
@@ -11,12 +11,11 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <NavBar/>
-        <div className="body_content">
+      <Application>
+        <div className="about_us">
           We're two brothers selling cars
         </div>
-      </div>
+      </Application>
     )
   }
 }
