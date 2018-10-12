@@ -33,22 +33,6 @@ export default class App extends React.Component {
                 />
               )
             })}
-            {listings.map((listing) => {
-              return(
-                <AllListing
-                  data={listing.data}
-                  photos={listing.photos}
-                />
-              )
-            })}
-            {listings.map((listing) => {
-              return(
-                <AllListing
-                  data={listing.data}
-                  photos={listing.photos}
-                />
-              )
-            })}
           </div>
         </Application>
     )

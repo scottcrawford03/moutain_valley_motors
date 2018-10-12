@@ -1,0 +1,63 @@
+
+.single_listing_show {
+  .selected_photo {
+    height: 100%;
+  }
+
+  .carousel_photo {
+    width: calc(100vw / 2);
+    height: 100%;
+  }
+}
+
+.all_listings_listing {
+  .carousel_photo {
+    width: 450px;
+    height: 400px;
+  }
+
+  .arrow {
+    position: relative;
+    cursor: pointer;
+
+    .arrow_button {
+      border: 1px solid;
+      background-color: white;
+      position: absolute;
+      top: calc(450px / 2);
+
+      &.right {
+        right: 10px;
+      }
+
+      &.left {
+        left: 10px;
+      }
+    }
+  }
+}
+
+.carousel_photo {
+  width: 100%;
+  height: auto;
+}
+
+.arrow {
+  position: relative;
+  cursor: pointer;
+
+  .arrow_button {
+    border: 1px solid;
+    background-color: white;
+    position: absolute;
+    top: calc(100vh / 2);
+
+    &.right {
+      right: 10px;
+    }
+
+    &.left {
+      left: 10px;
+    }
+  }
+}

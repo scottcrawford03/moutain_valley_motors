@@ -1,7 +1,7 @@
 import React from 'react'
-import Carousel from 'nuka-carousel';
+import Carousel from '../../shared/components/carousel'
 
-export default class NavBar extends React.Component {
+export default class AllListing extends React.Component {
   constructor(props) {
     super(props)
 
@@ -11,7 +11,7 @@ export default class NavBar extends React.Component {
     }
   }
 
-  handlePhotoClick() {
+  onListingClick() {
     const id = this.state.data.id
     const href = `${window.location.origin}/shop/${id}`
 
@@ -28,17 +28,14 @@ export default class NavBar extends React.Component {
 
     return (
       <div className="all_listings_listing" key={id}>
-        <div className="all_page_carousel">
+        <div>
           <Carousel
-            initialSlideHeight={50}
-            initialSlideWidth={200}
-          >
-            {photos.map((photo) => {
-              const { image_url } = photo
-              return (<img onClick={this.handlePhotoClick.bind(this)} key="abc" src={image_url} alt=""/>)
-            })}
-          </Carousel>
+            photos={photos}
+            showButton={true}
+          />
+          <div className="carousel_button" onClick={this.onListingClick.bind(this)}>See More</div>
         </div>
+
         <div className="all_details">
           <p>Year: {year}</p>
           <p>Make: {make}</p>

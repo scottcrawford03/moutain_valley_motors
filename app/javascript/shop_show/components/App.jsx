@@ -1,6 +1,6 @@
 import React from 'react'
 import Application from '../../shared/components/application'
-import Carousel from 'nuka-carousel';
+import Carousel from '../../shared/components/carousel'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -26,13 +26,9 @@ export default class App extends React.Component {
     return (
       <Application>
         <div className="single_listing_show">
-          <div className="single_listing_carousel">
-            <Carousel>
-              {photos.map((photo) => {
-                return(<img src={photo.image_url} />)
-              })}
-            </Carousel>
-          </div>
+          <Carousel
+            photos={photos}
+          />
           <div className="single_details">
             <p>Year: {year}</p>
             <p>Make: {make}</p>
