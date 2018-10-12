@@ -1,19 +1,21 @@
 
 .single_listing_show {
-  .selected_photo {
-    height: 100%;
+  .carousel {
+    width: calc(100vw / 2);
+    height: auto;
+    overflow: hidden;
   }
 
-  .carousel_photo {
-    width: calc(100vw / 2);
+  .selected_photo {
     height: 100%;
   }
 }
 
 .all_listings_listing {
-  .carousel_photo {
+  .carousel {
     width: 450px;
     height: 400px;
+    overflow: hidden;
   }
 
   .arrow {
@@ -39,10 +41,16 @@
 
 .carousel_photo {
   width: 100%;
-  height: auto;
+  height: 100%;
+
+  img {
+    width: 100%;
+    position: relative;
+  }
 }
 
 .arrow {
+  z-index: 999;
   position: relative;
   cursor: pointer;
 

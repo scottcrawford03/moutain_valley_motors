@@ -41,7 +41,9 @@ export default class Carousel extends React.Component {
             <span className="arrow_button left" onClick={this.onClickLeft.bind(this)}>Left</span>
             <span className="arrow_button right" onClick={this.onClickRight.bind(this)}>Right</span>
           </div>
-          <img className="carousel_photo" src={selectedPhoto.image_url} alt=""/>
+          <div className="carousel_photo">
+            <img src={selectedPhoto.image_url} alt=""/>
+          </div>
         </div>
       </div>
     )
