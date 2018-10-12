@@ -1,38 +1,38 @@
-# default: &default
-#   adapter: postgresql
-#   encoding: unicode
-#   host: db
-#   username: postgres
-#   password:
-#   pool: 5
-
-# development:
-#   <<: *default
-#   database: myapp_development
-
-
-# test:
-#   <<: *default
-#   database: myapp_test
-
-# for local dev only
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: postgres
+  password:
+  pool: 5
 
 development:
   <<: *default
-  database: moutain_valley_motors_development
+  database: myapp_development
+
 
 test:
   <<: *default
-  database: moutain_valley_motors_test
+  database: myapp_test
 
-production:
-  <<: *default
-  database: moutain_valley_motors_production
-  username: moutain_valley_motors
-  password: <%= ENV['MOUTAIN_VALLEY_MOTORS_DATABASE_PASSWORD'] %>
+# for local dev only
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   # For details on connection pooling, see Rails configuration guide
+#   # http://guides.rubyonrails.org/configuring.html#database-pooling
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+# development:
+#   <<: *default
+#   database: moutain_valley_motors_development
+
+# test:
+#   <<: *default
+#   database: moutain_valley_motors_test
+
+# production:
+#   <<: *default
+#   database: moutain_valley_motors_production
+#   username: moutain_valley_motors
+#   password: <%= ENV['MOUTAIN_VALLEY_MOTORS_DATABASE_PASSWORD'] %>
