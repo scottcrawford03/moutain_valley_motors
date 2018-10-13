@@ -18,9 +18,10 @@ export default class NavBar extends React.Component {
         <a className='shop' onClick={this.handleLinkClick.bind(this, '/shop')}>
           Shop
         </a>
-        <a className='about_us' onClick={this.handleLinkClick.bind(this, '/about_us')}>
-          About Us
-        </a>
+        <div className='about_us'>
+          <p>Dino Draganovic</p>
+          <p>303-944-6611</p>
+        </div>
       </div>
     )
   }

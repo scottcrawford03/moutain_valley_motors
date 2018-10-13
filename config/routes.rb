@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get 'shop', to: 'shop#index'
   get 'shop/:id', to: 'shop#show'
   get 'admin/login', to: 'admin#index'
+
+  get 'admin/upload', to: 'upload#index'
 end
