@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
+import ShopShow from './components/shop_show'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("yolo")
   const shopShowPage = document.querySelector('#shop_show')
   const objectsDataTag = document.getElementById('show_data')
   const objectsData = JSON.parse(objectsDataTag.getAttribute('data'))
-  ReactDOM.render(<App listing={objectsData}/>, shopShowPage)
+  ReactDOM.render(<ShopShow listing={objectsData}/>, shopShowPage)
 })
 

@@ -26,9 +26,10 @@ listing = Listing.create(
   mileage: "2800 miles"
 )
 
-5.times do
+18.times do |t|
+  image_number = t + 1
   listing.photos.create(
-    image_url: "https://mountainvalleymotors.nyc3.digitaloceanspaces.com/abc123-ford-f150-raptor/front.jpg",
-    position: 0
+    image_url: "https://mountainvalleymotors.nyc3.digitaloceanspaces.com/mazda/mazda_#{image_number}.jpg",
+    position: t
   )
 end

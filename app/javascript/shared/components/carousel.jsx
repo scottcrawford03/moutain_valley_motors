@@ -4,12 +4,15 @@ export default class Carousel extends React.Component {
   constructor(props) {
     super(props)
 
-
     this.state = {
       photos: this.props.photos,
-      selectedIndex: 0,
+      selectedIndex: this.props.selectedIndex || 0,
       photosLength: this.props.photos.length - 1
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ selectedIndex: nextProps.selectedIndex });
   }
 
   onClickRight() {

@@ -12,8 +12,8 @@ export default class App extends React.Component {
 
   render() {
     const photos = [
-      {image_url: "https://mountainvalleymotors.nyc3.digitaloceanspaces.com/abc123-ford-f150-raptor/front.jpg"},
-      {image_url: "https://www.biography.com/.image/t_share/MTIwNjA4NjMzNzYwMjg2MjIw/nicolas-cage-9234498-1-402.jpg"}
+      {image_url: "https://mountainvalleymotors.nyc3.digitaloceanspaces.com/mazda/mazda_1.jpg"},
+      {image_url: "https://mountainvalleymotors.nyc3.digitaloceanspaces.com/mazda/mazda_2.jpg"}
     ]
     return (
       <Application>
