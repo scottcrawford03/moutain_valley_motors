@@ -13,8 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@font-face {
+  font-family: "Aggie-Normal";
+  src: url(/assets/Aggie-Normal.otf) format("truetype");
+}
 
 body, html {
+  font-family: "Aggie-Normal";
   height: 100%;
   margin: 0;
   background-color: gray;
@@ -27,4 +32,12 @@ a label {
 
 .application {
   height: 100%;
+}
+
+.company_logo {
+  width: 100%;
+}
+
+.company_logo img {
+  width: 175px;
 }
