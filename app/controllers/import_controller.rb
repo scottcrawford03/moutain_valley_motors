@@ -1,7 +1,9 @@
-class UploadController < ApplicationController
+class ImportController < ApplicationController
   def index
     return redirect_to root_path unless valid_user(permitted_params[:username], permitted_params[:password])
+    ImportService.import!
 
+    render json: "OK"
   end
 
   private
