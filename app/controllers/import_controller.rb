@@ -1,8 +1,11 @@
 class ImportController < ApplicationController
   def index
-    # return redirect_to root_path unless valid_user(permitted_params[:username], permitted_params[:password])
+    # TODO: Remove this once we verify the params being sent
+    puts "This happened at: #{Time.now}"
     puts "Here is the body: #{request.body}"
     puts "Here are the params: #{params}"
+
+    # return redirect_to root_path unless valid_user(permitted_params[:username], permitted_params[:password])
     # ImportService.import!
 
     render json: "OK"
