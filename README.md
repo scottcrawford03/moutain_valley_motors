@@ -1,23 +1,8 @@
 # README
 
+This is the website for Mountain Valley Motors:
+
 Please refer to the Makefile for nice commands.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In general it uses docker for deployment, but i have commented out parts in the database.yml
+so that you can run it locally without docker if you so choose.
