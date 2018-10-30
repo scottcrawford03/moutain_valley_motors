@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'shop/:id', to: 'shop#show'
   get 'admin/login', to: 'admin#index'
 
-  get 'admin/import', to: 'import#index'
+  post 'admin/import', to: 'import#index'
 end
