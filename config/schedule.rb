@@ -8,6 +8,7 @@
 
 env :GEM_PATH, '/usr/local/bundle/gems/'
 set :bundle_command, 'bundle exec'
+set :environment, 'development'
 job_type :runner,  "cd :path && :bundle_command rails runner -e :environment ':task' :output"
 set :output, "log/cron.log"
 #
