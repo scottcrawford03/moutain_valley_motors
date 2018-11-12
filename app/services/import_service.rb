@@ -20,8 +20,12 @@ class ImportService
     "Transmission" => :transmission,
     "Fuel Type" => :fuel_economy
   }
-  
+
   class << self
+    def import_test!
+      puts "omg it works!"
+    end
+
     def import!
       csv_text = File.read("./lib/dummy_data/test_csv.csv")
       csv = CSV.parse(csv_text, :headers => true)
