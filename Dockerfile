@@ -46,9 +46,6 @@ COPY package.json yarn.lock ./
 RUN npm install --global yarn
 RUN yarn install
 
-# create a cron log file
-RUN touch ./log/cron.log
-
 # Copy the main application.
 COPY . ./
 
@@ -56,6 +53,8 @@ COPY . ./
 # from the outside.
 EXPOSE 80
 WORKDIR /app
+
+RUN touch /app/log/cron.log
 
 RUN bundle exec whenever --update-crontab
 CMD cron && bundle exec rails s -b 0.0.0.0
