@@ -47,7 +47,7 @@ RUN npm install --global yarn
 RUN yarn install
 
 # create a cron log file
-RUN touch /log/cron.log
+RUN touch ./log/cron.log
 
 # Copy the main application.
 COPY . ./
