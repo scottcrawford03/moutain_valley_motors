@@ -4,9 +4,9 @@ LABEL maintainer="scottcrawford03@gmail.com"
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-# Install curl
+# Install curl and cron
 RUN apt-get update && apt-get install -y \
-  curl build-essential libssl-dev libpq-dev
+  curl build-essential libssl-dev libpq-dev cron
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
@@ -46,6 +46,9 @@ COPY package.json yarn.lock ./
 RUN npm install --global yarn
 RUN yarn install
 
+# create a cron log file
+RUN touch /log/cron.log
+
 # Copy the main application.
 COPY . ./
 
@@ -54,4 +57,5 @@ COPY . ./
 EXPOSE 80
 WORKDIR /app
 
-CMD bundle exec rails s -b 0.0.0.0
+RUN bundle exec whenever --update-crontab
+CMD cron && bundle exec rails s -b 0.0.0.0

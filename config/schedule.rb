@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, "/log/cron.log"
 #
 every 1.day, at: '4:30 am' do
   puts "running import"
