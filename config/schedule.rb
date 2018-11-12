@@ -5,6 +5,8 @@
 
 # Example:
 #
+
+env :GEM_PATH, '/usr/local/bundle/gems/'
 set :output, "log/cron.log"
 #
 every 1.day, at: '4:30 am' do
