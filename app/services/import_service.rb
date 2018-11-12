@@ -1,4 +1,5 @@
 require 'csv'
+require 'net/ftp'
 
 class ImportService
   HEADER_TO_COLUMN = {
@@ -27,20 +28,35 @@ class ImportService
     end
 
     def import!
-      csv_text = File.read("./lib/dummy_data/test_csv.csv")
-      csv = CSV.parse(csv_text, :headers => true)
-      csv.each do |row|
-        result =  row.each_with_object({}) do |(header, value), car_attrs|
-          column = HEADER_TO_COLUMN[header]
-          next unless column.present?
+      # ftp = Net::FTP.new("68.183.99.167")
+      # ftp.login("general", "mvmdenver")
+      # ftp.chdir("files")
+      # ftp.nlst.each do |file|
+      #   ftp.getbinaryfile(file, "#{Rails.root}/inventory/#{file}")
+      # end
 
-          car_attrs[column] = value
-        end
+      # csv_text = File.read("./inventory/test.csv")
+      # csv = CSV.parse(csv_text, :headers => false)
+      # csv.each do |row|
+      #   binding.pry
+      #   result =  row.each_with_object({}) do |(header, value), car_attrs|
+      #     column = HEADER_TO_COLUMN[header]
+      #     next unless column.present?
 
-        Listing.first.update_attributes!(result)
-      end
+      #     car_attrs[column] = value
+      #   end
 
-      puts Listing.first
+      #   Listing.destroy_all
+
+      #   listing = Listing.new(result)
+      #   listing.photos = Photo.all
+
+      #   if listing.save
+      #     puts 'holy shit'
+      #   end
+      # end
+
+      puts "DONE"
     end
   end
 end
