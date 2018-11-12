@@ -57,4 +57,5 @@ WORKDIR /app
 RUN touch /app/log/cron.log
 
 RUN bundle exec whenever --update-crontab --set environment=development
-CMD cron && bundle exec rails s -b 0.0.0.0
+RUN cron
+CMD bundle exec rails s -b 0.0.0.0
