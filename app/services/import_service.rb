@@ -3,23 +3,26 @@ require 'net/ftp'
 
 class ImportService
   HEADER_TO_COLUMN = {
-    "Stock #" => :stock_number,
-    "Vehicle Year" => :year,
-    "Vehicle Make" => :make,
-    "Vehicle Model" => :model,
-    "Vehicle VIN" => :vin,
+    "STOCK" => :stock_number,
+    "YEAR" => :year,
+    "MAKE" => :make,
+    "MODEL" => :model,
+    "VIN" => :vin,
     "Mileage" => :mileage,
     "New/Used" => nil,
-    "Cylinders" => :engine,
-    "Vehicle Color" => :color,
-    "Vehicle Color 2" => nil,
-    "Vehicle Features" => nil,
-    "Internet Price" => nil,
+    "CYLINDER" => :engine,
     "Vehicle Style" => :body_type,
     "Drive Train" => :drive_train,
     "Engine" => :engine,
     "Transmission" => :transmission,
-    "Fuel Type" => :fuel_economy
+    "Fuel Type" => :fuel_economy,
+    "Color" => :color,
+    "Color 2" => :interior_color,
+    "Features" => nil,
+    "Photo URLs" => nil,
+    "Original Cost" => nil,
+    "Certified" => nil,
+    "Vehicle Type" => :body_type
   }
 
   class << self
@@ -28,33 +31,54 @@ class ImportService
     end
 
     def import!
-      # ftp = Net::FTP.new("68.183.99.167")
-      # ftp.login("general", "mvmdenver")
-      # ftp.chdir("files")
-      # ftp.nlst.each do |file|
-      #   ftp.getbinaryfile(file, "#{Rails.root}/inventory/#{file}")
-      # end
+      ftp = Net::FTP.new("68.183.99.167")
 
-      # csv_text = File.read("./inventory/test.csv")
-      # csv = CSV.parse(csv_text, :headers => false)
-      # csv.each do |row|
-      #   binding.pry
-      #   result =  row.each_with_object({}) do |(header, value), car_attrs|
-      #     column = HEADER_TO_COLUMN[header]
-      #     next unless column.present?
+      puts 'logging in'
+      ftp.login("general", "mvmdenver")
 
-      #     car_attrs[column] = value
-      #   end
+      puts 'changing dir'
+      ftp.chdir("files")
 
-      #   Listing.destroy_all
+      puts 'saving files'
+      ftp.nlst.each do |file|
+        puts "saving file: #{file}"
+        ftp.getbinaryfile(file, "#{Rails.root}/inventory/#{file}")
+      end
 
-      #   listing = Listing.new(result)
-      #   listing.photos = Photo.all
+      puts 'reading the csv'
+      csv_text = File.read("./inventory/test.csv")
 
-      #   if listing.save
-      #     puts 'holy shit'
-      #   end
-      # end
+      puts 'parsing the csv'
+      csv = CSV.parse(csv_text, :headers => true)
+
+      Listing.destroy_all
+
+      # Temporary
+      photos = Photo.all.map do |photo|
+        attributes = photo.attributes
+        attributes.delete("id")
+        attributes
+      end
+
+      csv.each do |row|
+        result =  row.each_with_object({}) do |(header, value), car_attrs|
+          column = HEADER_TO_COLUMN[header]
+
+          next unless column.present?
+
+          car_attrs[column] = value
+        end
+
+        listing = Listing.new(result)
+
+        listing.photos = photos.map do |attrs|
+          Photo.create(attrs)
+        end
+
+        if listing.save
+          puts 'holy shit'
+        end
+      end
 
       puts "DONE"
     end
