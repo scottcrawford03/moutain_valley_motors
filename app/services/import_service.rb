@@ -46,7 +46,7 @@ class ImportService
       end
 
       puts 'reading the csv'
-      csv_text = File.read("./inventory/test.csv")
+      csv_text = File.read("#{Rails.root}/inventory/test.csv")
 
       puts 'parsing the csv'
       csv = CSV.parse(csv_text, :headers => true)
