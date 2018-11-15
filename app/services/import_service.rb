@@ -22,7 +22,8 @@ class ImportService
     "Photo URLs" => nil,
     "Original Cost" => nil,
     "Certified" => nil,
-    "Vehicle Type" => :body_type
+    "Vehicle Type" => :body_type,
+    "Photo URLs" => :photo_urls
   }
 
   class << self
@@ -42,7 +43,11 @@ class ImportService
       puts 'saving files'
       ftp.nlst.each do |file|
         puts "saving file: #{file}"
-        ftp.getbinaryfile(file, "#{Rails.root}/inventory/#{file}")
+        if file.ends_with?(".jpg")
+          ftp.getbinaryfile(file, "#{Rails.root}/app/assets/images/#{file}")
+        else
+          ftp.getbinaryfile(file, "#{Rails.root}/inventory/#{file}")
+        end
       end
 
       puts 'reading the csv'
@@ -52,13 +57,7 @@ class ImportService
       csv = CSV.parse(csv_text, :headers => true)
 
       Listing.destroy_all
-
-      # Temporary
-      photos = Photo.all.map do |photo|
-        attributes = photo.attributes
-        attributes.delete("id")
-        attributes
-      end
+      Photo.destroy_all
 
       csv.each do |row|
         result =  row.each_with_object({}) do |(header, value), car_attrs|
@@ -66,13 +65,17 @@ class ImportService
 
           next unless column.present?
 
+          value = value.split(",") if column == :photo_urls
+
           car_attrs[column] = value
         end
 
+        photo_urls = result.delete(:photo_urls)
         listing = Listing.new(result)
 
-        listing.photos = photos.map do |attrs|
-          Photo.create(attrs)
+        listing.photos = photo_urls.map.with_index do |url, index|
+          jpg = url.split("/").last
+          Photo.create(image_url: jpg, position: index)
         end
 
         if listing.save

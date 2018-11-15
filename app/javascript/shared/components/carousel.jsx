@@ -36,6 +36,12 @@ export default class Carousel extends React.Component {
   render() {
     const { photos, selectedIndex } = this.state
     const selectedPhoto = photos[selectedIndex]
+    let image_url = "https://mountainvalleymotors.nyc3.digitaloceanspaces.com/MountainValleyMotors_Logo_NoBackground.png"
+
+    if (selectedPhoto) {
+      image_url = `/assets/${selectedPhoto.image_url || selectedPhoto}`
+    }
+
 
     return (
       <div className="carousel">
@@ -45,7 +51,7 @@ export default class Carousel extends React.Component {
             <span className="arrow_button right" onClick={this.onClickRight.bind(this)}>&#62;</span>
           </div>
           <div className="carousel_photo">
-            <img src={selectedPhoto.image_url} alt=""/>
+            <img src={image_url} alt=""/>
           </div>
         </div>
       </div>

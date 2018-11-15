@@ -1,2 +1,6 @@
 <div id="homepage"></div>
 <%= javascript_pack_tag 'homepage' %>
+<%= content_tag :div,
+  id: 'index_data',
+  data: @featured_photos.to_json do %>
+<% end %>
